@@ -1,22 +1,37 @@
-# Android fstab file.
-#<src>                                         <mnt_point>          <type>    <mnt_flags and options>                                                           <fs_mgr_flags>
-# The filesystem that contains the filesystem checker binary (typically /system) cannot
-# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
-# data partition must be located at the bottom for supporting device encryption
+# Copyright (c) 2011, Code Aurora Forum. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of Code Aurora Forum, Inc. nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-/dev/block/platform/sdhci-pxav3.2/by-name/SYSTEM      /system              ext4      ro,noatime                                                                        wait
-/dev/block/platform/sdhci-pxav3.2/by-name/EFS         /efs                 ext4      noatime,nosuid,nodev,journal_async_commit,errors=panic                            wait,check
-/dev/block/platform/sdhci-pxav3.2/by-name/CACHE       /cache               ext4      noatime,nosuid,nodev,journal_async_commit,errors=panic                            wait,check
-/dev/block/platform/sdhci-pxav3.2/by-name/USER	      /data                ext4      noatime,nosuid,nodev,discard,noauto_da_alloc,journal_async_commit,errors=panic    wait,check,encryptable=footer
-/dev/block/platform/sdhci-pxav3.2/by-name/NVM	      /NVM                 ext4      nosuid,nodev,nodelalloc,noauto_da_alloc,		    							   wait,check
-/dev/block/platform/sdhci-pxav3.2/by-name/KERNEL      /boot                emmc      defaults    recoveryonly
-/dev/block/platform/sdhci-pxav3.2/by-name/RECOVERY    /recovery            emmc      defaults    recoveryonly
-/dev/block/platform/sdhci-pxav3.2/by-name/MODEM		  /modem               emmc      defaults    recoveryonly
-/dev/null                                             /sdcard       	   datamedia  defaults                recoveryonly
-# External SD Card
-/devices/platform/sdhci-pxav3.0/mmc_host/mmc1 	  	  auto                 auto      defaults    voldmanaged=sdcard1:auto
-
-
-
-
-
+# <src>                                      <mnt_point>  	<type>  <mnt_flags and options>                     <fs_mgr_flags>
+/dev/block/mmcblk0p6		/efs        		ext4		default		recoveryonly
+/dev/block/mmcblk0p9		/boot		emmc	default		recoveryonly
+/dev/block/mmcblk0p10		/recovery  	emmc	default		recoveryonly
+/dev/block/mmcblk0p15		/cache      	ext4		default		recoveryonly
+/dev/block/mmcblk0p14		/system     	ext4		default		recoveryonly
+/dev/block/mmcblk0p17		/data		ext4		default	 	wait,length=-16384
+/dev/block/mmcblk0p16		/preload		ext4		default		recoveryonly
+/dev/block/mmcblk0p12		/nvm		ext4		default		recoveryonly
+/dev/block/mmcblk1p1		/sdcard		vfat		default		recoveryonly
