@@ -5,6 +5,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-add_lunch_combo omni_lt02wifi-user
-add_lunch_combo omni_lt02wifi-userdebug
-add_lunch_combo omni_lt02wifi-eng
+add_lunch_combo lt02wifi-user
+add_lunch_combo lt02wifi-userdebug
+add_lunch_combo lt02wifi-eng

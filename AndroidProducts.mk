@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_lt02wifi.mk
+    $(LOCAL_DIR)/lt02wifi.mk
 
 COMMON_LUNCH_CHOICES := \
-    omni_lt02wifi-user \
-    omni_lt02wifi-userdebug \
-    omni_lt02wifi-eng
+    lt02wifi-user \
+    lt02wifi-userdebug \
+    lt02wifi-eng
