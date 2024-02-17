@@ -15,7 +15,7 @@ $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, device/samsung/lt02wifi/device.mk)
 
 PRODUCT_DEVICE := lt02wifi
-PRODUCT_NAME := omni_lt02wifi
+PRODUCT_NAME := lt02wifi
 PRODUCT_BRAND := Samsung
 PRODUCT_MODEL := SM-T210
 PRODUCT_MANUFACTURER := samsung
